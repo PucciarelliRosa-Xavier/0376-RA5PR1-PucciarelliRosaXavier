@@ -1,6 +1,9 @@
 <?php
+    // Definir una variable amb el numero de la taula de multiplicar que volem (actualitzar per a que s'obtingui a partir del formulari)
 	$numero = 7;
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,10 +26,10 @@
         text-align: center;
         font-size: 18px;    
     }
-        .pair {
+        .pair { /*Estils per a numeros parells*/
             background-color: yellow;
         }
-        .odd {
+        .odd { /*Estils per a numeros imparells*/
             background-color: blue;
 		</style>
 		
@@ -34,18 +37,26 @@
 	
 <body>
 <h1>Taula de mutliplicar </h1>
+	
+<form method="POST"> <!--Creacio del formulari per obtenir el numero -->
+    <label>Introdueix un nmero:</label>
+    <input type="number" name="numero" required>
+    <button type="submit">Generar taula</button>
+</form>
+	
 <?php
   echo "<table>";
-   for ($i = 1; $i <= 10; $i++) {   
-	if ($i % 2 == 0) {
+   for ($i = 1; $i <= 10; $i++) {    //Bucle for per iterar els numeros de l'1 al 10, per calular la multiplicacio de numero*i i mostrar la multiplicació i el resultat
+								 
+	if ($i % 2 == 0) { //Comprovar si el numeor es parell o senar per aplicar-li una clase per aplicar estils
     	$tipus = "pair";
 		} else {
     	$tipus = "odd";
 		}
-          echo "<tr class='$tipus'>";
-          echo "<td>$numero x $i</td>";
-          echo "<td>" . ($numero * $i) . "</td>";
-          echo "</tr>";
+          echo "<tr class='$tipus'>";  //Mostrar la fila amb la seva clase corresponent (odd o pair)
+          echo "<td>$numero x $i</td>"; //Mostrar la primera columna amb l'operació. per exemple: 4x7
+          echo "<td>" . ($numero * $i) . "</td>"; //Mostrar la segona columna amb el resultat. Per exemple: 28
+          echo "</tr>"; 
   }
   echo "</table>";
 ?>
