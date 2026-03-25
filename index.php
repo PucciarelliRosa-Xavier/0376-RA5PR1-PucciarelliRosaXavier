@@ -6,6 +6,17 @@
 <head>
 	   <title>Taula de multiplicar</title>
 	<style>
+	h1 {
+    margin-bottom: 40px;
+	}
+	body {
+        text-align: center; 
+    }
+ 	table {
+        border-collapse: collapse;
+        width: 400px;
+        margin: 0 auto;
+    }
     td {
         border: 1px solid #000;
         padding: 20px;       
