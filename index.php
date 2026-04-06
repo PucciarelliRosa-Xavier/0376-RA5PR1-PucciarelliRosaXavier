@@ -1,6 +1,6 @@
 <?php
     // Definir una variable amb el numero de la taula de multiplicar que volem (actualitzar per a que s'obtingui a partir del formulari)
-	$numero = 7;
+	$numero = 13;
 ?>
 
 
@@ -30,7 +30,7 @@
             background-color: yellow;
         }
         .odd { /*Estils per a numeros imparells*/
-            background-color: blue;
+            background-color: blue; }
 		</style>
 		
 </head>
@@ -45,6 +45,9 @@
 </form>
 	
 <?php
+if ($numero < 1 || $numero > 12) {
+    echo "<p style='color:red;'>Error: el numero ha de ser entre 1 i 12</p>";
+} else {
   echo "<table>";
    for ($i = 1; $i <= 10; $i++) {    //Bucle for per iterar els numeros de l'1 al 10, per calular la multiplicacio de numero*i i mostrar la multiplicació i el resultat
 								 
@@ -58,7 +61,7 @@
           echo "<td>" . ($numero * $i) . "</td>"; //Mostrar la segona columna amb el resultat. Per exemple: 28
           echo "</tr>"; 
   }
-  echo "</table>";
+  echo "</table>";}
 ?>
 
 </body>
