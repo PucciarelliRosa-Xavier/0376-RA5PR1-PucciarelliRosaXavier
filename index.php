@@ -1,9 +1,3 @@
-<?php
-    // Definir una variable amb el numero de la taula de multiplicar que volem (actualitzar per a que s'obtingui a partir del formulari)
-	$numero = 13;
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,23 +39,30 @@
 </form>
 	
 <?php
-if ($numero < 1 || $numero > 12) {
-    echo "<p style='color:red;'>Error: el numero ha de ser entre 1 i 12</p>";
-} else {
-  echo "<table>";
-   for ($i = 1; $i <= 10; $i++) {    //Bucle for per iterar els numeros de l'1 al 10, per calular la multiplicacio de numero*i i mostrar la multiplicació i el resultat
+if (isset($_POST['numero'])) {
+    $numero = $_POST['numero'];
+	
+	if ($numero < 1 || $numero > 12) {
+    	echo "<p style='color:red;'>Error: el numero ha de ser entre 1 i 12</p>";}
+	else {
+ 	 	echo "<table>";
+   		for ($i = 1; $i <= 10; $i++) {    //Bucle for per iterar els numeros de l'1 al 10, per calular la multiplicacio de numero*i i mostrar la multiplicació i el resultat
 								 
-	if ($i % 2 == 0) { //Comprovar si el numeor es parell o senar per aplicar-li una clase per aplicar estils
-    	$tipus = "pair";
-		} else {
-    	$tipus = "odd";
-		}
+			if ($i % 2 == 0) { //Comprovar si el numeor es parell o senar per aplicar-li una clase per aplicar estils
+    			$tipus = "pair";}
+			else {
+    			$tipus = "odd";}
+									  
           echo "<tr class='$tipus'>";  //Mostrar la fila amb la seva clase corresponent (odd o pair)
           echo "<td>$numero x $i</td>"; //Mostrar la primera columna amb l'operació. per exemple: 4x7
           echo "<td>" . ($numero * $i) . "</td>"; //Mostrar la segona columna amb el resultat. Per exemple: 28
           echo "</tr>"; 
   }
-  echo "</table>";}
+  		echo "</table>";
+	}
+}else{     
+		echo "<p>Introdueix un numero entre 1 i 12 per  veure la taula de multiplicar.</p>";}
+
 ?>
 
 </body>
